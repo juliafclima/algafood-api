@@ -1,4 +1,4 @@
-package infrastructure.repository;
+package com.algaworks.algafood.infrastructure.repository;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.algaworks.algafood.domain.model.Cozinha;
-import com.algaworks.algafood.repository.CozinhaRepository;
+import com.algaworks.algafood.domain.repository.CozinhaRepository;
 
 @Component
 public class CozinhaRepositoryImpl implements CozinhaRepository {
@@ -40,4 +40,5 @@ public class CozinhaRepositoryImpl implements CozinhaRepository {
 		cozinha = buscar(cozinha.getId());
 		manager.remove(cozinha);
 	}
+
 }

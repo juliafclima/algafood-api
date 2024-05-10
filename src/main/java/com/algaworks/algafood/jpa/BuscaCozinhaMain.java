@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
 import com.algaworks.algafood.domain.model.Cozinha;
-import com.algaworks.algafood.repository.CozinhaRepository;
+import com.algaworks.algafood.domain.repository.CozinhaRepository;
 
 public class BuscaCozinhaMain {
 
@@ -21,4 +21,5 @@ public class BuscaCozinhaMain {
 		
 		System.out.println(cozinha.getNome());
 	}
+	
 }

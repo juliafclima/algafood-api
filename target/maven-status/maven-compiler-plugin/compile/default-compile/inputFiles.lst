@@ -1,3 +1,11 @@
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Cozinha.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\repository\CozinhaRepository.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\infrastructure\repository\CozinhaRepositoryImpl.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\jpa\ConsultaCozinhaMain.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\jpa\ExclusaoCozinhaMain.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\AlgafoodApiApplication.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\jpa\BuscaCozinhaMain.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\jpa\AlteracaoCozinhaMain.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Restaurante.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\repository\CozinhaRepository.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\jpa\InclusaoCozinhaMain.java
