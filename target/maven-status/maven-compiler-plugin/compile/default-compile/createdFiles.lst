@@ -1,0 +1,3 @@
+com\algaworks\algafood\AlgafoodApiApplication.class
+com\algaworks\algafood\domain\model\Cozinha.class
+com\algaworks\algafood\domain\model\Restaurante.class
