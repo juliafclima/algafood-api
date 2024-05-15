@@ -15,10 +15,11 @@ import lombok.EqualsAndHashCode;
 public class FormaPagamento {
 
 	@EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @Column(nullable = false)
-    private String descricao;    
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(nullable = false)
+	private String descricao;
+	
 }
