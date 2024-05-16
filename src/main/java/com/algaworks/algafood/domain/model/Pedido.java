@@ -24,7 +24,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Pedido {
 
-	@EqualsAndHashCode.Include
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -59,4 +59,5 @@ public class Pedido {
     
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens = new ArrayList<>();
+
 }
