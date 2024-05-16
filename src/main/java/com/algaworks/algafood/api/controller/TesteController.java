@@ -34,15 +34,10 @@ public class TesteController {
 		return cozinhaRepository.findByNome(nome);
 	}
 	
-	@GetMapping("/cozinhas/exists")
+	@GetMapping("/cozinhas/existe")
 	public boolean cozinhaExists(String nome) {
 		return cozinhaRepository.existsByNome(nome);
 	}
-	
-//	@GetMapping("/cozinhas/primeira")
-//	public Optional<Cozinha> cozinhaPrimeiro() {
-//		return cozinhaRepository.buscarPrimeiro();
-//	}
 	
 	@GetMapping("/restaurantes/por-taxa-frete")
 	public List<Restaurante> restaurantesPorTaxaFrete(
@@ -61,7 +56,7 @@ public class TesteController {
 		return restauranteRepository.findFirstRestauranteByNomeContaining(nome);
 	}
 	
-	@GetMapping("/restaurantes/top2-por-nome")
+	@GetMapping("/restaurantes/top-2")
 	public List<Restaurante> restaurantesTop2PorNome(String nome) {
 		return restauranteRepository.findTop2ByNomeContaining(nome);
 	}
@@ -76,15 +71,4 @@ public class TesteController {
 	public int restaurantesCountPorCozinha(Long cozinhaId) {
 		return restauranteRepository.countByCozinhaId(cozinhaId);
 	}
-	
-	@GetMapping("/restaurantes/com-frete-gratis")
-	public List<Restaurante> restaurantesComFreteGratis(String nome) {
-		return restauranteRepository.findComFreteGratis(nome);
-	}
-	
-//	@GetMapping("/restaurantes/primeiro")
-//	public Optional<Restaurante> restaurantePrimeiro() {
-//		return restauranteRepository.buscarPrimeiro();
-//	}
-	
 }
