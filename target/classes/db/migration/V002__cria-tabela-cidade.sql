@@ -1,8 +1,7 @@
-CREATE TABLE cidade (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    nome_cidade VARCHAR(80) NOT NULL,
-    nome_estado VARCHAR(80) NOT NULL,
-    
-    PRIMARY KEY (id)
-    
-) ENGINE=INNODB DEFAULT CHARSET=UTF8;
+create table cidade (
+	id bigint not null auto_increment,
+	nome_cidade varchar(80) not null,
+	nome_estado varchar(80) not null,
+	
+	primary key (id)
+) engine=InnoDB default charset=utf8;
