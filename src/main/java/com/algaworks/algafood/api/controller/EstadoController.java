@@ -48,7 +48,8 @@ public class EstadoController {
 	@PutMapping("/{estadoId}")
 	public Estado atualizar(@PathVariable Long estadoId,
 	        @RequestBody Estado estado) {
-	    Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
+	   
+		Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
 	    
 	    BeanUtils.copyProperties(estado, estadoAtual, "id");
 	    
@@ -58,6 +59,7 @@ public class EstadoController {
 	@DeleteMapping("/{estadoId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long estadoId) {
-	    cadastroEstado.excluir(estadoId);	
+	    
+		cadastroEstado.excluir(estadoId);	
 	}
 }
