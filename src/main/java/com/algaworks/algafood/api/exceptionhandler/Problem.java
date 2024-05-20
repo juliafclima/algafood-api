@@ -17,12 +17,17 @@ public class Problem {
 
 	private Integer status;
 	
-	@JsonFormat(pattern = "dd-MM-yyyy HH:mm")
+	@JsonFormat(pattern = "dd/MM/yyyy - HH:mm")
 	private LocalDateTime timestamp;
+	
 	private String type;
+	
 	private String title;
+	
 	private String detail;
+	
 	private String userMessage;
+	
 	private List<Object> objects;
 	
 	@Getter
