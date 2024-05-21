@@ -10,18 +10,19 @@ import javax.validation.constraints.PositiveOrZero;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 public class RestauranteInput {
 
 	@NotBlank
 	private String nome;
-
+	
 	@NotNull
 	@PositiveOrZero
 	private BigDecimal taxaFrete;
-
+	
 	@Valid
 	@NotNull
 	private CozinhaIdInput cozinha;
+	
 }

@@ -16,7 +16,6 @@ public class MultiploValidator implements ConstraintValidator<Multiplo, Number> 
 	
 	@Override
 	public boolean isValid(Number value, ConstraintValidatorContext context) {
-		
 		boolean valido = true;
 		
 		if (value != null) {

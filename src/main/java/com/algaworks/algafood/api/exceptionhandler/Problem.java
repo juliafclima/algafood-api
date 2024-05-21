@@ -15,17 +15,11 @@ import lombok.Getter;
 public class Problem {
 
 	private Integer status;
-	
 	private OffsetDateTime timestamp;
-	
 	private String type;
-	
 	private String title;
-	
 	private String detail;
-	
 	private String userMessage;
-	
 	private List<Object> objects;
 	
 	@Getter
@@ -33,7 +27,8 @@ public class Problem {
 	public static class Object {
 		
 		private String name;
-		
 		private String userMessage;
+		
 	}
+	
 }

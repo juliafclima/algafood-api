@@ -13,8 +13,9 @@ public class CidadeInput {
 
 	@NotBlank
 	private String nome;
-
+	
 	@Valid
 	@NotNull
 	private EstadoIdInput estado;
+	
 }
