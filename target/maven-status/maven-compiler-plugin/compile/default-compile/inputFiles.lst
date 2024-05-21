@@ -1,7 +1,11 @@
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Permissao.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\exception\NegocioException.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\model\input\CozinhaIdInput.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\model\mixin\CozinhaMixin.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\repository\CidadeRepository.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\service\CadastroRestauranteService.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\model\RestauranteModel.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\core\jackson\JacksonMixinModule.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\exception\RestauranteNaoEncontradoException.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\controller\EstadoController.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\repository\EstadoRepository.java
@@ -12,15 +16,18 @@ C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\service\CadastroCozinhaService.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\infrastructure\repository\spec\RestauranteSpecs.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\core\validation\ValorZeroIncluiDescricao.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\model\mixin\CidadeMixin.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Estado.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Usuario.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Grupo.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\FormaPagamento.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\service\CadastroCidadeService.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Cidade.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\model\input\RestauranteInput.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\core\validation\Multiplo.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\repository\PermissaoRepository.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\controller\CozinhaController.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\model\CozinhaModel.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\repository\CustomJpaRepository.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Pedido.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\controller\RestauranteController.java
@@ -29,6 +36,7 @@ C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\repository\RestauranteRepository.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Cozinha.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\repository\CozinhaRepository.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\assembler\RestauranteModelAssembler.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\AlgafoodApiApplication.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\core\validation\Groups.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\infrastructure\repository\CustomJpaRepositoryImpl.java
@@ -38,6 +46,7 @@ C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\exception\EntidadeNaoEncontradaException.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\exception\CidadeNaoEncontradaException.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Restaurante.java
+C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\api\assembler\RestauranteInputDisassembler.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\core\validation\ValidacaoException.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\core\validation\ValidationConfig.java
 C:\Users\Júlia Lima\Downloads\Neki\trilha\maven\algafood-api\src\main\java\com\algaworks\algafood\domain\model\Produto.java

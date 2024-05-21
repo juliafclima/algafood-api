@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" name="com.algaworks.algafood.CadastroCozinhaIT" time="15.583" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" name="com.algaworks.algafood.CadastroRestauranteIT" time="3.71" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -57,9 +57,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="deveRetornarQuantidadeCorretaDeCozinhas_QuandoConsultarCozinhas" classname="com.algaworks.algafood.CadastroCozinhaIT" time="3.022"/>
-  <testcase name="deveRetornarRespostaEStatusCorretos_QuandoConsultarCozinhaExistente" classname="com.algaworks.algafood.CadastroCozinhaIT" time="1.114"/>
-  <testcase name="deveRetornarStatus200_QuandoConsultarCozinhas" classname="com.algaworks.algafood.CadastroCozinhaIT" time="0.548"/>
-  <testcase name="deveRetornarStatus404_QuandoConsultarCozinhaInexistente" classname="com.algaworks.algafood.CadastroCozinhaIT" time="0.48"/>
-  <testcase name="deveRetornarStatus201_QuandoCadastrarCozinha" classname="com.algaworks.algafood.CadastroCozinhaIT" time="0.568"/>
+  <testcase name="deveRetornarRespostaEStatusCorretos_QuandoConsultarRestauranteExistente" classname="com.algaworks.algafood.CadastroRestauranteIT" time="0.618"/>
+  <testcase name="deveRetornarStatus200_QuandoConsultarRestaurantes" classname="com.algaworks.algafood.CadastroRestauranteIT" time="0.526"/>
+  <testcase name="deveRetornarStatus400_QuandoCadastrarRestauranteComCozinhaInexistente" classname="com.algaworks.algafood.CadastroRestauranteIT" time="0.549"/>
+  <testcase name="deveRetornarStatus201_QuandoCadastrarRestaurante" classname="com.algaworks.algafood.CadastroRestauranteIT" time="0.477"/>
+  <testcase name="deveRetornarStatus400_QuandoCadastrarRestauranteSemTaxaFrete" classname="com.algaworks.algafood.CadastroRestauranteIT" time="0.523"/>
+  <testcase name="deveRetornarStatus404_QuandoConsultarRestauranteInexistente" classname="com.algaworks.algafood.CadastroRestauranteIT" time="0.482"/>
+  <testcase name="deveRetornarStatus400_QuandoCadastrarRestauranteSemCozinha" classname="com.algaworks.algafood.CadastroRestauranteIT" time="0.527"/>
 </testsuite>
