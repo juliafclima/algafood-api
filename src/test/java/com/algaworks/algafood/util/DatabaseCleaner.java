@@ -1,5 +1,4 @@
 package com.algaworks.algafood.util;
-
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -26,7 +25,6 @@ public class DatabaseCleaner {
 	private Connection connection;
 
 	public void clearTables() {
-		
 		try (Connection connection = dataSource.getConnection()) {
 			this.connection = connection;
 			
@@ -40,7 +38,6 @@ public class DatabaseCleaner {
 	}
 	
 	private void checkTestDatabase() throws SQLException {
-
 		String catalog = connection.getCatalog();
 
 		if (catalog == null || !catalog.endsWith("test")) {
@@ -50,13 +47,11 @@ public class DatabaseCleaner {
 	}
 
 	private void tryToClearTables() throws SQLException {
-		
 		List<String> tableNames = getTableNames();
 		clear(tableNames);
 	}
 
 	private List<String> getTableNames() throws SQLException {
-		
 		List<String> tableNames = new ArrayList<>();
 
 		DatabaseMetaData metaData = connection.getMetaData();
@@ -72,7 +67,6 @@ public class DatabaseCleaner {
 	}
 
 	private void clear(List<String> tableNames) throws SQLException {
-		
 		Statement statement = buildSqlStatement(tableNames);
 
 		logger.debug("Executing SQL");
@@ -80,7 +74,6 @@ public class DatabaseCleaner {
 	}
 
 	private Statement buildSqlStatement(List<String> tableNames) throws SQLException {
-		
 		Statement statement = connection.createStatement();
 
 		statement.addBatch(sql("SET FOREIGN_KEY_CHECKS = 0"));
@@ -91,7 +84,6 @@ public class DatabaseCleaner {
 	}
 
 	private void addTruncateSatements(List<String> tableNames, Statement statement) {
-		
 		tableNames.forEach(tableName -> {
 			try {
 				statement.addBatch(sql("TRUNCATE TABLE " + tableName));
@@ -102,7 +94,6 @@ public class DatabaseCleaner {
 	}
 
 	private String sql(String sql) {
-		
 		logger.debug("Adding SQL: {}", sql);
 		return sql;
 	}

@@ -10,8 +10,8 @@ import lombok.Setter;
 public class SenhaInput {
 	
 	@NotBlank
-    private String senhaAtual;
-    
-    @NotBlank
-    private String novaSenha;
+	private String senhaAtual;
+	
+	@NotBlank
+	private String novaSenha;
 }

@@ -9,13 +9,12 @@ import org.springframework.util.StreamUtils;
 public class ResourceUtils {
 
 	public static String getContentFromResource(String resourceName) {
-		
 		try {
 			InputStream stream = ResourceUtils.class.getResourceAsStream(resourceName);
-			
 			return StreamUtils.copyToString(stream, Charset.forName("UTF-8"));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
+	
 }

@@ -1,5 +1,6 @@
 package com.algaworks.algafood.api.assembler;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,15 +15,16 @@ import com.algaworks.algafood.domain.model.Grupo;
 public class GrupoModelAssembler {
 
 	@Autowired
-    private ModelMapper modelMapper;
-    
-    public GrupoModel toModel(Grupo grupo) {
-        return modelMapper.map(grupo, GrupoModel.class);
-    }
-    
-    public List<GrupoModel> toCollectionModel(List<Grupo> grupos) {
-        return grupos.stream()
-                .map(grupo -> toModel(grupo))
-                .collect(Collectors.toList());
-    }   
+	private ModelMapper modelMapper;
+	
+	public GrupoModel toModel(Grupo grupo) {
+		return modelMapper.map(grupo, GrupoModel.class);
+	}
+	
+	public List<GrupoModel> toCollectionModel(Collection<Grupo> grupos) {
+	    return grupos.stream()
+	            .map(grupo -> toModel(grupo))
+	            .collect(Collectors.toList());
+	}
+	
 }

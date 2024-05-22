@@ -11,4 +11,5 @@ public class GrupoInput {
 
 	@NotBlank
 	private String nome;
+	
 }
