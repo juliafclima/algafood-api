@@ -57,7 +57,7 @@ public class RestauranteController {
 	public List<RestauranteModel> listarApenasNomes() {
 		return listar();
 	}
-
+	
 	@GetMapping("/{restauranteId}")
 	public RestauranteModel buscar(@PathVariable Long restauranteId) {
 		Restaurante restaurante = cadastroRestaurante.buscarOuFalhar(restauranteId);
