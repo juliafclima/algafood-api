@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.algaworks.algafood.domain.model.Pedido;
-import com.algaworks.algafood.domain.service.EnvioEmailService.Mensagem;
+import com.algaworks.algafood.domain.repository.PedidoRepository;
 
 @Service
 public class FluxoPedidoService {
@@ -14,7 +14,7 @@ public class FluxoPedidoService {
 	private EmissaoPedidoService emissaoPedido;
 	
 	@Autowired
-	private EnvioEmailService envioEmail;
+	private PedidoRepository pedidoRepository;
 	
 	@Transactional
 	public void confirmar(String codigoPedido) {
@@ -22,27 +22,21 @@ public class FluxoPedidoService {
 		Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
 		pedido.confirmar();
 		
-		var mensagem = Mensagem.builder()
-				.assunto(pedido.getRestaurante().getNome() + " - Pedido confirmado")
-				.corpo("pedido-confirmado.html")
-				.variavel("pedido", pedido)
-				.destinatario(pedido.getCliente().getEmail())
-				.build();
-		
-		envioEmail.enviar(mensagem);
+		pedidoRepository.save(pedido);
 	}
 	
 	@Transactional
 	public void cancelar(String codigoPedido) {
-		
-		Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
-		pedido.cancelar();
+	    Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
+	    pedido.cancelar();
+	    
+	    pedidoRepository.save(pedido);
 	}
 	
 	@Transactional
 	public void entregar(String codigoPedido) {
+		
 		Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
 		pedido.entregar();
 	}
-	
 }
