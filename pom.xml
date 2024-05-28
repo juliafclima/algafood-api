@@ -117,7 +117,7 @@
 	  <version>6.20.0</version>
 	</dependency>
 
- <!-- Mail -->
+ 	<!-- Mail -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-mail</artifactId>
@@ -127,6 +127,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-freemarker</artifactId>
     </dependency>
+    
+    <!-- Documentação -->
+    <dependency>
+	    <groupId>io.springfox</groupId>
+	    <artifactId>springfox-boot-starter</artifactId>
+	    <version>3.0.0</version>
+	</dependency>
   </dependencies>
 
   <build>
