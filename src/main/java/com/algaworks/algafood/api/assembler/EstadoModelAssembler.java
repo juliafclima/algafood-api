@@ -1,16 +1,15 @@
 package com.algaworks.algafood.api.assembler;
 
-import com.algaworks.algafood.api.AlgaLinks;
-import com.algaworks.algafood.api.controller.EstadoController;
-import com.algaworks.algafood.api.model.EstadoModel;
-import com.algaworks.algafood.domain.model.Estado;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import com.algaworks.algafood.api.AlgaLinks;
+import com.algaworks.algafood.api.controller.EstadoController;
+import com.algaworks.algafood.api.model.EstadoModel;
+import com.algaworks.algafood.domain.model.Estado;
 
 @Component
 public class EstadoModelAssembler
@@ -39,7 +38,7 @@ public class EstadoModelAssembler
 	@Override
 	public CollectionModel<EstadoModel> toCollectionModel(Iterable<? extends Estado> entities) {
 		return super.toCollectionModel(entities)
-				.add(linkTo(EstadoController.class).withSelfRel());
+				.add(algaLinks.linkToEstados());
 	}
 
 }

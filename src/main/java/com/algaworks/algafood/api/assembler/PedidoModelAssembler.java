@@ -26,6 +26,7 @@ public class PedidoModelAssembler
 
 	@Override
 	public PedidoModel toModel(Pedido pedido) {
+		
 		PedidoModel pedidoModel = createModelWithId(pedido.getCodigo(), pedido);
 		modelMapper.map(pedido, pedidoModel);
 
