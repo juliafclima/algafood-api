@@ -132,10 +132,16 @@
         <version>3.0.0</version>
     </dependency>
     
-    <!-- problema de serialização de OffsetDateTime -->
+    <!-- Problema de serialização de OffsetDateTime -->
     <dependency>
 	    <groupId>com.fasterxml.jackson.datatype</groupId>
 	    	<artifactId>jackson-datatype-jsr310</artifactId>
+	</dependency>
+	
+	<!-- Hateoas -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-hateoas</artifactId>
 	</dependency>
   </dependencies>
 
