@@ -15,6 +15,8 @@ public class WebConfig implements WebMvcConfigurer {
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
 			.allowedMethods("*");
+//			.allowedOrigins("*")
+//			.maxAge(30);
 	}
 	
 	@Bean

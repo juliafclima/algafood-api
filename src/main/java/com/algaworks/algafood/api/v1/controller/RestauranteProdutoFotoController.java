@@ -35,7 +35,7 @@ import com.algaworks.algafood.domain.service.CatalogoFotoProdutoService;
 import com.algaworks.algafood.domain.service.FotoStorageService;
 
 @RestController
-@RequestMapping(path = "/restaurantes/{restauranteId}/produtos/{produtoId}/foto")
+@RequestMapping(path = "/v1/restaurantes/{restauranteId}/produtos/{produtoId}/foto")
 public class RestauranteProdutoFotoController implements RestauranteProdutoFotoControllerOpenApi {
 
 	@Autowired

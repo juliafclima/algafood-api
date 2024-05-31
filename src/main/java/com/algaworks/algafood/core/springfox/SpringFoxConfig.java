@@ -69,9 +69,9 @@ public class SpringFoxConfig {
 		var typeResolver = new TypeResolver();
 		return new Docket(DocumentationType.OAS_30)
 				.select()
-					.apis(RequestHandlerSelectors.basePackage("com.algaworks.algafood.api"))
-					.paths(PathSelectors.any())
-					.build()
+				.apis(RequestHandlerSelectors.basePackage("com.algaworks.algafood.api"))
+				.paths(PathSelectors.any())
+				.build()
 				.useDefaultResponseMessages(false)
 				.globalResponses(HttpMethod.GET, globalGetResponseMessages())
 				.globalResponses(HttpMethod.POST, globalPostPutResponseMessages())
@@ -217,5 +217,5 @@ public class SpringFoxConfig {
 				.contact(new Contact("AlgaWorks", "https://www.algaworks.com", "contato@algaworks.com"))
 				.build();
 	}
-	
+
 }
