@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "algafood.storage.local.diretorio-fotos",
+    "type": "java.lang.String",
+    "description": "A description for 'algafood.storage.local.diretorio-fotos'"
+  },
+  {
+    "name": "algafood.email.sandbox.destinatario",
+    "type": "java.lang.String",
+    "description": "A description for 'algafood.email.sandbox.destinatario'"
+  }
+]}
