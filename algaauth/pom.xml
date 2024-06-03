@@ -21,7 +21,6 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
@@ -59,5 +58,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
