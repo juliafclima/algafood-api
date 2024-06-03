@@ -42,4 +42,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected UserDetailsService userDetailsService() {
 		return super.userDetailsService();
 	}
+	
 }
