@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +17,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.CompositeTokenGranter;
 import org.springframework.security.oauth2.provider.TokenGranter;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 @Configuration
 @EnableAuthorizationServer
@@ -29,6 +31,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
+	
+	@Autowired
+	private JwtKeyStoreProperties jwtKeyStoreProperties;
 	
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -67,8 +72,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-		security
-			.checkTokenAccess("permitAll()")
+		security.checkTokenAccess("permitAll()")
+			.tokenKeyAccess("permitAll()")
 			.allowFormAuthenticationForClients();
 	}
 	
@@ -84,8 +89,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	
 	@Bean
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
-		JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-		jwtAccessTokenConverter.setSigningKey("89a7sd89f7as98f7dsa98fds7fd89sasd9898asdf98s");
+		var jwtAccessTokenConverter = new JwtAccessTokenConverter();
+		
+		var jksResource = new ClassPathResource(jwtKeyStoreProperties.getPath());
+		var keyStorePass = jwtKeyStoreProperties.getPassword();
+		var keyPairAlias = jwtKeyStoreProperties.getKeypairAlias();
+		
+		var keyStoreKeyFactory = new KeyStoreKeyFactory(jksResource, keyStorePass.toCharArray());
+		var keyPair = keyStoreKeyFactory.getKeyPair(keyPairAlias);
+		
+		jwtAccessTokenConverter.setKeyPair(keyPair);
 		
 		return jwtAccessTokenConverter;
 	}
@@ -99,5 +112,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				pkceAuthorizationCodeTokenGranter, endpoints.getTokenGranter());
 		
 		return new CompositeTokenGranter(granters);
-	}	
+	}
+	
 }
