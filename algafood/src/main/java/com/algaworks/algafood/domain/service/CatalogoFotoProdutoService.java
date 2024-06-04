@@ -49,7 +49,7 @@ public class CatalogoFotoProdutoService {
 		
 		return foto;
 	}
-
+	
 	@Transactional
 	public void excluir(Long restauranteId, Long produtoId) {
 	    FotoProduto foto = buscarOuFalhar(restauranteId, produtoId);
@@ -61,8 +61,8 @@ public class CatalogoFotoProdutoService {
 	}
 	
 	public FotoProduto buscarOuFalhar(Long restauranteId, Long produtoId) {
-		return produtoRepository.findFotoById(restauranteId, produtoId)
-				.orElseThrow(() -> new FotoProdutoNaoEncontradaException(restauranteId, produtoId));
-	}
+	    return produtoRepository.findFotoById(restauranteId, produtoId)
+	            .orElseThrow(() -> new FotoProdutoNaoEncontradaException(restauranteId, produtoId));
+	}  
 	
 }

@@ -11,10 +11,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 public class RestauranteInput {
-
+	
 	@ApiModelProperty(example = "Thai Gourmet", required = true)
 	@NotBlank
 	private String nome;
@@ -31,5 +31,5 @@ public class RestauranteInput {
 	@Valid
 	@NotNull
 	private EnderecoInput endereco;
-	
+
 }

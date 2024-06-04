@@ -16,6 +16,5 @@ public class RestauranteResumoModel extends RepresentationModel<RestauranteResum
 	private Long id;
 
 	@ApiModelProperty(example = "Thai Gourmet")
-	private String nome;
-	
-}
+	private String nome;  
+}  

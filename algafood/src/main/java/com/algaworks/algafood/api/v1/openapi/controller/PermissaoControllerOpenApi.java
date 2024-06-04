@@ -13,4 +13,5 @@ public interface PermissaoControllerOpenApi {
     @ApiOperation("Lista as permissões")
     CollectionModel<PermissaoModel> listar();
     
+
 }

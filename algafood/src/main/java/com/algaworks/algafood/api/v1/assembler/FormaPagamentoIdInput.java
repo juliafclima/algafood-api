@@ -1,4 +1,4 @@
-package com.algaworks.algafood.api.v1.model.input;
+package com.algaworks.algafood.api.v1.assembler;
 
 import javax.validation.constraints.NotNull;
 
@@ -12,6 +12,5 @@ public class FormaPagamentoIdInput {
 
 	@ApiModelProperty(example = "1", required = true)
 	@NotNull
-	private Long id;
-	
-}
+	private Long id;           
+}        

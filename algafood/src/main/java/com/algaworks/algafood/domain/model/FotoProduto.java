@@ -33,8 +33,8 @@ public class FotoProduto {
 		if (getProduto() != null) {
 			return getProduto().getRestaurante().getId();
 		}
-		
 		return null;
 	}
+	
 	
 }

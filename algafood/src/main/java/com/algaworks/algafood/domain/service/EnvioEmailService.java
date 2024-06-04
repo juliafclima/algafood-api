@@ -26,6 +26,7 @@ public interface EnvioEmailService {
 		private String corpo;
 		
 		@Singular("variavel")
-		private Map<String, Object> variaveis;	
-	}	
+		private Map<String, Object> variaveis;
+	}
+	
 }

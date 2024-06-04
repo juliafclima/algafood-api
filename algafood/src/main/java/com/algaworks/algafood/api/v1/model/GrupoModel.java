@@ -17,5 +17,5 @@ public class GrupoModel extends RepresentationModel<GrupoModel> {
 
 	@ApiModelProperty(example = "Gerente")
 	private String nome;
-	
-}
+    
+}                

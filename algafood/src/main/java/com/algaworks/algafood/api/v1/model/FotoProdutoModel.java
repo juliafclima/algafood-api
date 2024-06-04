@@ -22,5 +22,6 @@ public class FotoProdutoModel extends RepresentationModel<FotoProdutoModel> {
 	private String contentType;
 
 	@ApiModelProperty(example = "202912")
-	private Long tamanho;  
+	private Long tamanho; 
+	
 }

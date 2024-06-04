@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PageModelOpenApi {
-
+	
 	@ApiModelProperty(example = "10", value = "Quantidade de registros por página")
 	private Long size;
 
@@ -21,4 +21,5 @@ public class PageModelOpenApi {
 
 	@ApiModelProperty(example = "0", value = "Número da página (começa em 0)")
 	private Long number;
+
 }

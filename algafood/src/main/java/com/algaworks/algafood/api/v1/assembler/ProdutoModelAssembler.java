@@ -37,5 +37,5 @@ public class ProdutoModelAssembler
                 produto.getRestaurante().getId(), produto.getId(), "foto"));
         
         return produtoModel;
-    }  
-}      
+    }       
+}        

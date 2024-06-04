@@ -21,51 +21,51 @@ import com.algaworks.algafood.domain.model.Usuario;
 import com.algaworks.algafood.domain.service.CadastroUsuarioService;
 
 @RestController
-@RequestMapping(path = "/v1/usuarios/{usuarioId}/grupos")
+@RequestMapping(path = "/v1/usuarios/{usuarioId}/grupos", 
+    produces = MediaType.APPLICATION_JSON_VALUE)
 public class UsuarioGrupoController implements UsuarioGrupoControllerOpenApi {
 
-	@Autowired
-	private CadastroUsuarioService cadastroUsuario;
+    @Autowired
+    private CadastroUsuarioService cadastroUsuario;
+    
+    @Autowired
+    private GrupoModelAssembler grupoModelAssembler;
+    
+    @Autowired
+    private AlgaLinks algaLinks;    
+    
+    @Override
+    @GetMapping
+    public CollectionModel<GrupoModel> listar(@PathVariable Long usuarioId) {
+        Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
+        
+        CollectionModel<GrupoModel> gruposModel = grupoModelAssembler.toCollectionModel(usuario.getGrupos())
+                .removeLinks()
+                .add(algaLinks.linkToUsuarioGrupoAssociacao(usuarioId, "associar"));
+        
+        gruposModel.getContent().forEach(grupoModel -> {
+            grupoModel.add(algaLinks.linkToUsuarioGrupoDesassociacao(
+                    usuarioId, grupoModel.getId(), "desassociar"));
+        });
+        
+        return gruposModel;
+    } 
+    
+    @Override
+    @DeleteMapping("/{grupoId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Void> desassociar(@PathVariable Long usuarioId, @PathVariable Long grupoId) {
+        cadastroUsuario.desassociarGrupo(usuarioId, grupoId);
+        
+        return ResponseEntity.noContent().build();
+    }
 
-	@Autowired
-	private GrupoModelAssembler grupoModelAssembler;
-
-	@Autowired
-	private AlgaLinks algaLinks;
-
-	@Override
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public CollectionModel<GrupoModel> listar(@PathVariable Long usuarioId) {
-		Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
-
-		CollectionModel<GrupoModel> gruposModel = grupoModelAssembler.toCollectionModel(usuario.getGrupos())
-				.removeLinks()
-				.add(algaLinks.linkToUsuarioGrupoAssociacao(usuarioId, "associar"));
-
-		gruposModel.getContent().forEach(grupoModel -> {
-			grupoModel.add(algaLinks.linkToUsuarioGrupoDesassociacao(
-					usuarioId, grupoModel.getId(), "desassociar"));
-		});
-
-		return gruposModel;
-	}
-
-	@Override
-	@DeleteMapping("/{grupoId}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public ResponseEntity<Void> desassociar(@PathVariable Long usuarioId, @PathVariable Long grupoId) {
-		cadastroUsuario.desassociarGrupo(usuarioId, grupoId);
-
-		return ResponseEntity.noContent().build();
-	}
-
-	@Override
-	@PutMapping("/{grupoId}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public ResponseEntity<Void> associar(@PathVariable Long usuarioId, @PathVariable Long grupoId) {
-		cadastroUsuario.associarGrupo(usuarioId, grupoId);
-
-		return ResponseEntity.noContent().build();
-	}
-
-}
+    @Override
+    @PutMapping("/{grupoId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Void> associar(@PathVariable Long usuarioId, @PathVariable Long grupoId) {
+        cadastroUsuario.associarGrupo(usuarioId, grupoId);
+        
+        return ResponseEntity.noContent().build();
+    }
+}      

@@ -23,4 +23,4 @@ public class UsuariosModelOpenApi {
         private List<UsuarioModel> usuarios;
         
     }   
-}    
+}        

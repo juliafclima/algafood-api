@@ -16,13 +16,13 @@ public class ResourceUriHelper {
 
 	public static void addUriInResponseHeader(Object resourceId) {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
-			.path("/{id}")
-			.buildAndExpand(resourceId).toUri();
-		
-		HttpServletResponse response = ((ServletRequestAttributes) 
+				.path("/{id}")
+				.buildAndExpand(resourceId).toUri();
+
+		HttpServletResponse response = ((ServletRequestAttributes)
 				RequestContextHolder.getRequestAttributes()).getResponse();
-		
+
 		response.setHeader(HttpHeaders.LOCATION, uri.toString());
 	}
-	
+
 }

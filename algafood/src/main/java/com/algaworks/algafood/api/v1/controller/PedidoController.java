@@ -1,22 +1,9 @@
 package com.algaworks.algafood.api.v1.controller;
 
-import com.algaworks.algafood.api.v1.assembler.PedidoInputDisassembler;
-import com.algaworks.algafood.api.v1.assembler.PedidoModelAssembler;
-import com.algaworks.algafood.api.v1.assembler.PedidoResumoModelAssembler;
-import com.algaworks.algafood.api.v1.model.PedidoModel;
-import com.algaworks.algafood.api.v1.model.PedidoResumoModel;
-import com.algaworks.algafood.api.v1.model.input.PedidoInput;
-import com.algaworks.algafood.api.v1.openapi.controller.PedidoControllerOpenApi;
-import com.algaworks.algafood.core.data.PageWrapper;
-import com.algaworks.algafood.core.data.PageableTranslator;
-import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
-import com.algaworks.algafood.domain.exception.NegocioException;
-import com.algaworks.algafood.domain.filter.PedidoFilter;
-import com.algaworks.algafood.domain.model.Pedido;
-import com.algaworks.algafood.domain.model.Usuario;
-import com.algaworks.algafood.domain.repository.PedidoRepository;
-import com.algaworks.algafood.domain.service.EmissaoPedidoService;
-import com.algaworks.algafood.infrastructure.repository.spec.PedidoSpecs;
+import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,12 +20,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import java.util.Map;
+import com.algaworks.algafood.api.v1.assembler.PedidoInputDisassembler;
+import com.algaworks.algafood.api.v1.assembler.PedidoModelAssembler;
+import com.algaworks.algafood.api.v1.assembler.PedidoResumoModelAssembler;
+import com.algaworks.algafood.api.v1.model.PedidoModel;
+import com.algaworks.algafood.api.v1.model.PedidoResumoModel;
+import com.algaworks.algafood.api.v1.model.input.PedidoInput;
+import com.algaworks.algafood.api.v1.openapi.controller.PedidoControllerOpenApi;
+import com.algaworks.algafood.core.data.PageWrapper;
+import com.algaworks.algafood.core.data.PageableTranslator;
+import com.algaworks.algafood.core.security.AlgaSecurity;
+import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.NegocioException;
+import com.algaworks.algafood.domain.filter.PedidoFilter;
+import com.algaworks.algafood.domain.model.Pedido;
+import com.algaworks.algafood.domain.model.Usuario;
+import com.algaworks.algafood.domain.repository.PedidoRepository;
+import com.algaworks.algafood.domain.service.EmissaoPedidoService;
+import com.algaworks.algafood.infrastructure.repository.spec.PedidoSpecs;
+
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 
 @RestController
-@RequestMapping(value = "/v1/pedidos")
-public class PedidoController implements PedidoControllerOpenApi{
+@RequestMapping(path = "/v1/pedidos", produces = MediaType.APPLICATION_JSON_VALUE)
+public class PedidoController implements PedidoControllerOpenApi {
+
 
 	@Autowired
 	private PedidoRepository pedidoRepository;
@@ -54,10 +61,17 @@ public class PedidoController implements PedidoControllerOpenApi{
 	
 	@Autowired
 	private PedidoInputDisassembler pedidoInputDisassembler;
-
+	
 	@Autowired
 	private PagedResourcesAssembler<Pedido> pagedResourcesAssembler;
-
+	
+	@Autowired
+	private AlgaSecurity algaSecurity;
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(value = "Nomes das propriedades para filtrar na resposta, separados por vírgula",
+				name = "campos", paramType = "query", type = "string")
+	})
 	@Override
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public PagedModel<PedidoResumoModel> pesquisar(PedidoFilter filtro,
@@ -71,17 +85,15 @@ public class PedidoController implements PedidoControllerOpenApi{
 
 		return pagedResourcesAssembler.toModel(pedidosPage, pedidoResumoModelAssembler);
 	}
-
-	@Override
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	
+	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public PedidoModel adicionar(@Valid @RequestBody PedidoInput pedidoInput) {
 		try {
 			Pedido novoPedido = pedidoInputDisassembler.toDomainObject(pedidoInput);
 
-			// TODO pegar usuário autenticado
 			novoPedido.setCliente(new Usuario());
-			novoPedido.getCliente().setId(1L);
+			novoPedido.getCliente().setId(algaSecurity.getUsuarioId());
 
 			novoPedido = emissaoPedido.emitir(novoPedido);
 
@@ -90,9 +102,10 @@ public class PedidoController implements PedidoControllerOpenApi{
 			throw new NegocioException(e.getMessage(), e);
 		}
 	}
-
-	@Override
-	@GetMapping(value = "/{codigoPedido}", produces = MediaType.APPLICATION_JSON_VALUE)
+	
+	@ApiImplicitParam(value = "Nomes das propriedades para filtrar na resposta, separados por vírgula",
+			name = "campos", paramType = "query", type = "string")
+	@GetMapping("/{codigoPedido}")
 	public PedidoModel buscar(@PathVariable String codigoPedido) {
 		Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
 		
@@ -116,3 +129,4 @@ public class PedidoController implements PedidoControllerOpenApi{
 	}
 	
 }
+        

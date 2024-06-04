@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class PermissaoModel extends RepresentationModel<PermissaoModel> {
-	
+
 	@ApiModelProperty(example = "1")
 	private Long id;
 
@@ -19,6 +19,5 @@ public class PermissaoModel extends RepresentationModel<PermissaoModel> {
 	private String nome;
 
 	@ApiModelProperty(example = "Permite consultar cozinhas")
-	private String descricao;
-	
+	private String descricao;	
 }

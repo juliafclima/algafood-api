@@ -28,6 +28,5 @@ public class ItemPedidoModel extends RepresentationModel<ItemPedidoModel> {
 	private BigDecimal precoTotal;
 
 	@ApiModelProperty(example = "Menos picante, por favor")
-	private String observacao;
-	
-}
+	private String observacao;           
+}                

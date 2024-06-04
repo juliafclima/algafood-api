@@ -7,7 +7,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-@Relation(collectionRelation = "cidades")
+//@ApiModel(value = "Cidade", description = "Representa uma cidade")
+@Relation(collectionRelation = "Cidades")
 @Setter
 @Getter
 public class CidadeModel extends RepresentationModel<CidadeModel> {
@@ -20,4 +21,4 @@ public class CidadeModel extends RepresentationModel<CidadeModel> {
 
 	private EstadoModel estado;
 
-}
+}      

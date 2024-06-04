@@ -22,5 +22,4 @@ public class ItemPedidoInput {
 
 	@ApiModelProperty(example = "Menos picante, por favor")
 	private String observacao;
-	
-}
+}            

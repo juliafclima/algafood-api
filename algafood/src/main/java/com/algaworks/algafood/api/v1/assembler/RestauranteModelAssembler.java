@@ -12,19 +12,19 @@ import com.algaworks.algafood.api.v1.model.RestauranteModel;
 import com.algaworks.algafood.domain.model.Restaurante;
 
 @Component
-public class RestauranteModelAssembler
+public class RestauranteModelAssembler 
 		extends RepresentationModelAssemblerSupport<Restaurante, RestauranteModel> {
 
 	@Autowired
 	private ModelMapper modelMapper;
-
+	
 	@Autowired
 	private AlgaLinks algaLinks;
-
+	
 	public RestauranteModelAssembler() {
 		super(RestauranteController.class, RestauranteModel.class);
 	}
-
+	
 	@Override
 	public RestauranteModel toModel(Restaurante restaurante) {
 	    RestauranteModel restauranteModel = createModelWithId(restaurante.getId(), restaurante);
@@ -71,11 +71,11 @@ public class RestauranteModelAssembler
 	    
 	    return restauranteModel;
 	}
-
+	
 	@Override
 	public CollectionModel<RestauranteModel> toCollectionModel(Iterable<? extends Restaurante> entities) {
 		return super.toCollectionModel(entities)
 				.add(algaLinks.linkToRestaurantes());
 	}
-
+	
 }

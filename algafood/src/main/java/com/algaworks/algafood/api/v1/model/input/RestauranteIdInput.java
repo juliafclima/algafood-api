@@ -12,5 +12,5 @@ public class RestauranteIdInput {
 
 	@ApiModelProperty(example = "1", required = true)
 	@NotNull
-	private Long id;
-}
+	private Long id;  
+}        

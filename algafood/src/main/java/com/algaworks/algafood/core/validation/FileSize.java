@@ -21,9 +21,10 @@ public @interface FileSize {
 
 	String message() default "tamanho do arquivo inválido";
 
-	Class<?>[] groups() default {};
+	Class<?>[] groups() default { };
 
-	Class<? extends Payload>[] payload() default {};
-
+	Class<? extends Payload>[] payload() default { };
+	
 	String max();
+	
 }

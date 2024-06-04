@@ -12,38 +12,37 @@ import com.algaworks.algafood.api.v1.model.RestauranteBasicoModel;
 import com.algaworks.algafood.domain.model.Restaurante;
 
 @Component
-public class RestauranteBasicoModelAssembler
-		extends RepresentationModelAssemblerSupport<Restaurante, RestauranteBasicoModel> {
+public class RestauranteBasicoModelAssembler 
+        extends RepresentationModelAssemblerSupport<Restaurante, RestauranteBasicoModel> {
 
-	@Autowired
-	private ModelMapper modelMapper;
-
-	@Autowired
-	private AlgaLinks algaLinks;
-
-	public RestauranteBasicoModelAssembler() {
-		super(RestauranteController.class, RestauranteBasicoModel.class);
-	}
-
-	@Override
-	public RestauranteBasicoModel toModel(Restaurante restaurante) {
-		RestauranteBasicoModel restauranteModel = createModelWithId(
-				restaurante.getId(), restaurante);
-
-		modelMapper.map(restaurante, restauranteModel);
-
-		restauranteModel.add(algaLinks.linkToRestaurantes("restaurantes"));
-
-		restauranteModel.getCozinha().add(
-				algaLinks.linkToCozinha(restaurante.getCozinha().getId()));
-
-		return restauranteModel;
-	}
-
-	@Override
-	public CollectionModel<RestauranteBasicoModel> toCollectionModel(Iterable<? extends Restaurante> entities) {
-		return super.toCollectionModel(entities)
-				.add(algaLinks.linkToRestaurantes());
-	}
-
-}
+    @Autowired
+    private ModelMapper modelMapper;
+    
+    @Autowired
+    private AlgaLinks algaLinks;
+    
+    public RestauranteBasicoModelAssembler() {
+        super(RestauranteController.class, RestauranteBasicoModel.class);
+    }
+    
+    @Override
+    public RestauranteBasicoModel toModel(Restaurante restaurante) {
+        RestauranteBasicoModel restauranteModel = createModelWithId(
+                restaurante.getId(), restaurante);
+        
+        modelMapper.map(restaurante, restauranteModel);
+        
+        restauranteModel.add(algaLinks.linkToRestaurantes("restaurantes"));
+        
+        restauranteModel.getCozinha().add(
+                algaLinks.linkToCozinha(restaurante.getCozinha().getId()));
+        
+        return restauranteModel;
+    }
+    
+    @Override
+    public CollectionModel<RestauranteBasicoModel> toCollectionModel(Iterable<? extends Restaurante> entities) {
+        return super.toCollectionModel(entities)
+                .add(algaLinks.linkToRestaurantes());
+    }   
+}        

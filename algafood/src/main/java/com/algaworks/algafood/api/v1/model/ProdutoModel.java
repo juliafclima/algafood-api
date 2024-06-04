@@ -28,5 +28,4 @@ public class ProdutoModel extends RepresentationModel<ProdutoModel> {
 
 	@ApiModelProperty(example = "true")
 	private Boolean ativo;
-	
-}
+}                       

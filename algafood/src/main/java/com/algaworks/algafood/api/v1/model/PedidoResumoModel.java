@@ -1,14 +1,16 @@
 package com.algaworks.algafood.api.v1.model;
 
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.hateoas.RepresentationModel;
-import org.springframework.hateoas.server.core.Relation;
-
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
+
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
+
+//@JsonFilter("pedidoFilter")
 @Relation(collectionRelation = "pedidos")
 @Setter
 @Getter
@@ -32,7 +34,7 @@ public class PedidoResumoModel extends RepresentationModel<PedidoResumoModel> {
 	@ApiModelProperty(example = "2019-12-01T20:34:04Z")
 	private OffsetDateTime dataCriacao;
 
-	private RestauranteApenasNomeModel restaurante;
 	private UsuarioModel cliente;
+	private RestauranteApenasNomeModel restaurante;
 
 }

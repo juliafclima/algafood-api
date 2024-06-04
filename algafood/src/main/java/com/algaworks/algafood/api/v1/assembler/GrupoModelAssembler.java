@@ -42,4 +42,4 @@ public class GrupoModelAssembler
         return super.toCollectionModel(entities)
                 .add(algaLinks.linkToGrupos());
     }            
-}  
+}        

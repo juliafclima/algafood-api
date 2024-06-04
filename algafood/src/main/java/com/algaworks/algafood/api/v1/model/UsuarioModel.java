@@ -19,6 +19,5 @@ public class UsuarioModel extends RepresentationModel<UsuarioModel> {
 	private String nome;
 
 	@ApiModelProperty(example = "joao.ger@algafood.com.br")
-	private String email;
-	
-}
+	private String email;           
+}      

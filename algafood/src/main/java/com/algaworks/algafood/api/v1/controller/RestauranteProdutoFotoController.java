@@ -35,7 +35,8 @@ import com.algaworks.algafood.domain.service.CatalogoFotoProdutoService;
 import com.algaworks.algafood.domain.service.FotoStorageService;
 
 @RestController
-@RequestMapping(path = "/v1/restaurantes/{restauranteId}/produtos/{produtoId}/foto")
+@RequestMapping(path = "/v1/restaurantes/{restauranteId}/produtos/{produtoId}/foto",
+        produces = MediaType.APPLICATION_JSON_VALUE)
 public class RestauranteProdutoFotoController implements RestauranteProdutoFotoControllerOpenApi {
 
 	@Autowired
@@ -50,23 +51,23 @@ public class RestauranteProdutoFotoController implements RestauranteProdutoFotoC
 	@Autowired
 	private FotoProdutoModelAssembler fotoProdutoModelAssembler;
 	
-	@Override
 	@PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public FotoProdutoModel atualizarFoto(@PathVariable Long restauranteId,
-	                                      @PathVariable Long produtoId, @Valid FotoProdutoInput fotoProdutoInput,
-	                                      @RequestPart(required = true) MultipartFile arquivo) throws IOException {
+			@PathVariable Long produtoId, @Valid FotoProdutoInput fotoProdutoInput,
+			@RequestPart(required = true) MultipartFile arquivo) throws IOException {
 		Produto produto = cadastroProduto.buscarOuFalhar(restauranteId, produtoId);
-
-
+		
+//		MultipartFile arquivo = fotoProdutoInput.getArquivo();
+		
 		FotoProduto foto = new FotoProduto();
 		foto.setProduto(produto);
 		foto.setDescricao(fotoProdutoInput.getDescricao());
 		foto.setContentType(arquivo.getContentType());
 		foto.setTamanho(arquivo.getSize());
 		foto.setNomeArquivo(arquivo.getOriginalFilename());
-
+		
 		FotoProduto fotoSalva = catalogoFotoProduto.salvar(foto, arquivo.getInputStream());
-
+		
 		return fotoProdutoModelAssembler.toModel(fotoSalva);
 	}
 	
@@ -105,7 +106,7 @@ public class RestauranteProdutoFotoController implements RestauranteProdutoFotoC
 	public void excluir(@PathVariable Long restauranteId, 
 	        @PathVariable Long produtoId) {
 	    catalogoFotoProduto.excluir(restauranteId, produtoId);
-	}  
+	}   
 
 	private void verificarCompatibilidadeMediaType(MediaType mediaTypeFoto, 
 			List<MediaType> mediaTypesAceitas) throws HttpMediaTypeNotAcceptableException {
@@ -117,5 +118,7 @@ public class RestauranteProdutoFotoController implements RestauranteProdutoFotoC
 			throw new HttpMediaTypeNotAcceptableException(mediaTypesAceitas);
 		}
 	}
-	
+
 }
+	
+

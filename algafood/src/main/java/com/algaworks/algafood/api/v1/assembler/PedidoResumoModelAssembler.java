@@ -16,7 +16,7 @@ public class PedidoResumoModelAssembler
 
 	@Autowired
 	private ModelMapper modelMapper;
-
+	
 	@Autowired
 	private AlgaLinks algaLinks;
 
@@ -26,17 +26,17 @@ public class PedidoResumoModelAssembler
 
 	@Override
 	public PedidoResumoModel toModel(Pedido pedido) {
-		PedidoResumoModel pedidoModel = createModelWithId(pedido.getCodigo(), pedido);
-		modelMapper.map(pedido, pedidoModel);
+	    PedidoResumoModel pedidoModel = createModelWithId(pedido.getCodigo(), pedido);
+	    modelMapper.map(pedido, pedidoModel);
+	    
+	    pedidoModel.add(algaLinks.linkToPedidos("pedidos"));
+	    
+	    pedidoModel.getRestaurante().add(
+	            algaLinks.linkToRestaurante(pedido.getRestaurante().getId()));
 
-		pedidoModel.add(algaLinks.linkToPedidos("pedidos"));
-
-		pedidoModel.getRestaurante().add(
-				algaLinks.linkToRestaurante(pedido.getRestaurante().getId()));
-
-		pedidoModel.getCliente().add(algaLinks.linkToUsuario(pedido.getCliente().getId()));
-
-		return pedidoModel;
+	    pedidoModel.getCliente().add(algaLinks.linkToUsuario(pedido.getCliente().getId()));
+	    
+	    return pedidoModel;
 	}
 
 }

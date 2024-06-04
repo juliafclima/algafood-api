@@ -30,5 +30,5 @@ public class ProdutoInput {
 	@ApiModelProperty(example = "true", required = true)
 	@NotNull
 	private Boolean ativo;
-	
-}
+    
+}           

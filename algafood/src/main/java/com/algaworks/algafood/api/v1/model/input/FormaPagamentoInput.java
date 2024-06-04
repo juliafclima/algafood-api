@@ -13,5 +13,5 @@ public class FormaPagamentoInput {
 	@ApiModelProperty(example = "Cartão de crédito", required = true)
 	@NotBlank
 	private String descricao;
-	
-}
+    
+}     

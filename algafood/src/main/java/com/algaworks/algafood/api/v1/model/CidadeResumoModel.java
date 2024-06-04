@@ -20,4 +20,5 @@ public class CidadeResumoModel extends RepresentationModel<CidadeResumoModel> {
 
 	@ApiModelProperty(example = "Minas Gerais")
 	private String estado;
+
 }

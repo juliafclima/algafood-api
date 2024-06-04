@@ -29,4 +29,4 @@ public class PedidoFilter {
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private OffsetDateTime dataCriacaoFim;
 	
-}
+}	

@@ -13,5 +13,5 @@ public class CozinhaInput {
 	@ApiModelProperty(example = "Brasileira", required = true)
 	@NotBlank
 	private String nome;
-	
+    
 }

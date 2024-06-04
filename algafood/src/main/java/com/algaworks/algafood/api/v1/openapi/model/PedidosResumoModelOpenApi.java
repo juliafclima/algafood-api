@@ -27,4 +27,4 @@ public class PedidosResumoModelOpenApi {
         private List<PedidoResumoModel> pedidos;
         
     }   
-}  
+}           
