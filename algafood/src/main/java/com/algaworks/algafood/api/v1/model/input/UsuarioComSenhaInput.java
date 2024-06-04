@@ -13,4 +13,5 @@ public class UsuarioComSenhaInput extends UsuarioInput {
 	@ApiModelProperty(example = "123", required = true)
 	@NotBlank
 	private String senha;
+	
 }

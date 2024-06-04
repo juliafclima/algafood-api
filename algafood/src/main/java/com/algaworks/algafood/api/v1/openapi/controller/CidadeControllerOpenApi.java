@@ -44,7 +44,7 @@ public interface CidadeControllerOpenApi {
 			@ApiParam(value = "ID de uma cidade", example = "1", required = true) 
 			Long cidadeId,
 			
-			@ApiParam(name = "corpo", value = "Representação de uma cidade com os novos dados")
+			@ApiParam(name = "corpo", value = "Representação de uma cidade com os novos dados", required = true)
 			CidadeInput cidadeInput);
 	
 	@ApiOperation("Exclui uma cidade por ID")

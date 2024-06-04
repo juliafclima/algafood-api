@@ -10,11 +10,11 @@ import com.algaworks.algafood.domain.model.FotoProduto;
 import com.algaworks.algafood.domain.repository.ProdutoRepositoryQueries;
 
 @Repository
-public class ProdutoRepositoryImpl implements ProdutoRepositoryQueries{
+public class ProdutoRepositoryImpl implements ProdutoRepositoryQueries {
 
 	@PersistenceContext
 	private EntityManager manager;
-	
+
 	@Transactional
 	@Override
 	public FotoProduto save(FotoProduto foto) {
@@ -26,5 +26,5 @@ public class ProdutoRepositoryImpl implements ProdutoRepositoryQueries{
 	public void delete(FotoProduto foto) {
 		manager.remove(foto);
 	}
-
+	
 }

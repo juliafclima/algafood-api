@@ -11,7 +11,7 @@ import com.algaworks.algafood.domain.service.EnvioEmailService.Mensagem;
 
 @Component
 public class NotificacaoClientePedidoConfirmadoListener {
-	
+
 	@Autowired
 	private EnvioEmailService envioEmail;
 	
@@ -26,7 +26,7 @@ public class NotificacaoClientePedidoConfirmadoListener {
 				.destinatario(pedido.getCliente().getEmail())
 				.build();
 
-			envioEmail.enviar(mensagem);
+		envioEmail.enviar(mensagem);
 	}
-
+	
 }

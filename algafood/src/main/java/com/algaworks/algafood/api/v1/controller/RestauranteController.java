@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.algaworks.algafood.api.v1.assembler.RestauranteApenasNomeModelAssembler;
 import com.algaworks.algafood.api.v1.assembler.RestauranteBasicoModelAssembler;
-import com.algaworks.algafood.api.v1.assembler.RestauranteInputDisasslembler;
+import com.algaworks.algafood.api.v1.assembler.RestauranteInputDisassembler;
 import com.algaworks.algafood.api.v1.assembler.RestauranteModelAssembler;
 import com.algaworks.algafood.api.v1.model.RestauranteApenasNomeModel;
 import com.algaworks.algafood.api.v1.model.RestauranteBasicoModel;
@@ -51,29 +51,29 @@ public class RestauranteController implements RestauranteControllerOpenApi {
 	private RestauranteModelAssembler restauranteModelAssembler;
 	
 	@Autowired
-	private RestauranteInputDisasslembler restauranteInputDisassembler;
+	private RestauranteBasicoModelAssembler restauranteBasicoModelAssembler;
 	
 	@Autowired
-	private RestauranteBasicoModelAssembler restauranteBasicoModelAssembler;
-
+	private RestauranteApenasNomeModelAssembler restauranteApenasNomeModelAssembler;
+	
 	@Autowired
-	private RestauranteApenasNomeModelAssembler restauranteApenasNomeModelAssembler; 
-
+	private RestauranteInputDisassembler restauranteInputDisassembler;
+	
 	@CheckSecurity.Restaurantes.PodeConsultar
 	@Override
 	@GetMapping
-    public CollectionModel<RestauranteBasicoModel> listar() {
-        return restauranteBasicoModelAssembler
-                .toCollectionModel(restauranteRepository.findAll());
-    }
-
+	public CollectionModel<RestauranteBasicoModel> listar() {
+		return restauranteBasicoModelAssembler
+				.toCollectionModel(restauranteRepository.findAll());
+	}
+	
 	@CheckSecurity.Restaurantes.PodeConsultar
 	@Override
 	@GetMapping(params = "projecao=apenas-nome")
-    public CollectionModel<RestauranteApenasNomeModel> listarApenasNomes() {
-        return restauranteApenasNomeModelAssembler
-                .toCollectionModel(restauranteRepository.findAll());
-    }
+	public CollectionModel<RestauranteApenasNomeModel> listarApenasNomes() {
+		return restauranteApenasNomeModelAssembler
+				.toCollectionModel(restauranteRepository.findAll());
+	}
 	
 	@CheckSecurity.Restaurantes.PodeConsultar
 	@Override
@@ -119,9 +119,9 @@ public class RestauranteController implements RestauranteControllerOpenApi {
 	@PutMapping("/{restauranteId}/ativo")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> ativar(@PathVariable Long restauranteId) {
-	    cadastroRestaurante.ativar(restauranteId);
-	    
-	    return ResponseEntity.noContent().build();
+		cadastroRestaurante.ativar(restauranteId);
+		
+		return ResponseEntity.noContent().build();
 	}
 	
 	@CheckSecurity.Restaurantes.PodeGerenciarCadastro
@@ -129,9 +129,9 @@ public class RestauranteController implements RestauranteControllerOpenApi {
 	@DeleteMapping("/{restauranteId}/ativo")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> inativar(@PathVariable Long restauranteId) {
-	    cadastroRestaurante.inativar(restauranteId);
-	    
-	    return ResponseEntity.noContent().build();
+		cadastroRestaurante.inativar(restauranteId);
+		
+		return ResponseEntity.noContent().build();
 	}
 	
 	@CheckSecurity.Restaurantes.PodeGerenciarCadastro
@@ -163,9 +163,9 @@ public class RestauranteController implements RestauranteControllerOpenApi {
 	@PutMapping("/{restauranteId}/abertura")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> abrir(@PathVariable Long restauranteId) {
-	    cadastroRestaurante.abrir(restauranteId);
-	    
-	    return ResponseEntity.noContent().build();
+		cadastroRestaurante.abrir(restauranteId);
+		
+		return ResponseEntity.noContent().build();
 	}
 	
 	@CheckSecurity.Restaurantes.PodeGerenciarFuncionamento
@@ -173,9 +173,9 @@ public class RestauranteController implements RestauranteControllerOpenApi {
 	@PutMapping("/{restauranteId}/fechamento")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> fechar(@PathVariable Long restauranteId) {
-	    cadastroRestaurante.fechar(restauranteId);
-	    
-	    return ResponseEntity.noContent().build();
-	}       
+		cadastroRestaurante.fechar(restauranteId);
+		
+		return ResponseEntity.noContent().build();
+	}
 	
 }

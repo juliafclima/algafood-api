@@ -26,17 +26,16 @@ public class FluxoPedidoService {
 	
 	@Transactional
 	public void cancelar(String codigoPedido) {
-	    Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
-	    pedido.cancelar();
-	    
-	    pedidoRepository.save(pedido);
+		Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
+		pedido.cancelar();
+		
+		pedidoRepository.save(pedido);
 	}
-	    
+	
 	@Transactional
 	public void entregar(String codigoPedido) {
-	    Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
-	    
-	    pedido.entregar();
+		Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
+		pedido.entregar();
 	}
+	
 }
-

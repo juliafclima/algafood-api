@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @ApiModel("Links")
 public class LinksModelOpenApi {
-	
+
 	private LinkModel rel;
 	
 	@Setter
@@ -20,5 +20,5 @@ public class LinksModelOpenApi {
 		private boolean templated;
 		
 	}
-
+	
 }

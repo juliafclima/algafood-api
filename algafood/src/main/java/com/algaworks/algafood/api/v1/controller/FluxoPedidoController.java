@@ -22,6 +22,7 @@ public class FluxoPedidoController implements FluxoPedidoControllerOpenApi {
 	private FluxoPedidoService fluxoPedido;
 	
 	@CheckSecurity.Pedidos.PodeGerenciarPedidos
+	@Override
 	@PutMapping("/confirmacao")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> confirmar(@PathVariable String codigoPedido) {
@@ -31,6 +32,7 @@ public class FluxoPedidoController implements FluxoPedidoControllerOpenApi {
 	}
 	
 	@CheckSecurity.Pedidos.PodeGerenciarPedidos
+	@Override
 	@PutMapping("/cancelamento")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> cancelar(@PathVariable String codigoPedido) {
@@ -40,6 +42,7 @@ public class FluxoPedidoController implements FluxoPedidoControllerOpenApi {
 	}
 	
 	@CheckSecurity.Pedidos.PodeGerenciarPedidos
+	@Override
 	@PutMapping("/entrega")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> entregar(@PathVariable String codigoPedido) {

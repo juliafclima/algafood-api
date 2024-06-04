@@ -13,14 +13,15 @@ import lombok.Data;
 @Data
 public class UsuariosModelOpenApi {
 
-    private UsuariosEmbeddedModelOpenApi _embedded;
-    private Links _links;
-    
-    @ApiModel("UsuariosEmbeddedModel")
-    @Data
-    public class UsuariosEmbeddedModelOpenApi {
-        
-        private List<UsuarioModel> usuarios;
-        
-    }   
-}        
+	private UsuariosEmbeddedModelOpenApi _embedded;
+	private Links _links;
+	
+	@ApiModel("UsuariosEmbeddedModel")
+	@Data
+	public class UsuariosEmbeddedModelOpenApi {
+		
+		private List<UsuarioModel> usuarios;
+		
+	}
+	
+}

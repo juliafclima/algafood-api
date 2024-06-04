@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.hateoas.Links;
 
 import com.algaworks.algafood.api.v1.model.CozinhaModel;
-import com.algaworks.algafood.api.v1.openapi.model.CidadesModelOpenApi.CidadeEmbeddedModelOpenApi;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
@@ -15,16 +14,18 @@ import lombok.Setter;
 @ApiModel("CozinhasModel")
 @Setter
 @Getter
-public class CozinhasModelOpenApi  {
+public class CozinhasModelOpenApi {
 	
-	private  CidadeEmbeddedModelOpenApi _embedded;
+	private CozinhasEmbeddedModelOpenApi _embedded;
 	private Links _links;
 	private PageModelOpenApi page;
 	
 	@ApiModel("CozinhasEmbeddedModel")
 	@Data
 	public class CozinhasEmbeddedModelOpenApi {
+		
 		private List<CozinhaModel> cozinhas;
+		
 	}
-
+	
 }

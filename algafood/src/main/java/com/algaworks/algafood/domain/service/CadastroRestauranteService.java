@@ -54,11 +54,6 @@ public class CadastroRestauranteService {
 	}
 	
 	@Transactional
-	public void ativar(List<Long> restauranteIds) {
-		restauranteIds.forEach(this::ativar);
-	}
-	
-	@Transactional
 	public void inativar(Long restauranteId) {
 		Restaurante restauranteAtual = buscarOuFalhar(restauranteId);
 		
@@ -66,8 +61,27 @@ public class CadastroRestauranteService {
 	}
 	
 	@Transactional
+	public void ativar(List<Long> restauranteIds) {
+		restauranteIds.forEach(this::ativar);
+	}
+	
+	@Transactional
 	public void inativar(List<Long> restauranteIds) {
 		restauranteIds.forEach(this::inativar);
+	}
+	
+	@Transactional
+	public void abrir(Long restauranteId) {
+		Restaurante restauranteAtual = buscarOuFalhar(restauranteId);
+		
+		restauranteAtual.abrir();
+	}
+	
+	@Transactional
+	public void fechar(Long restauranteId) {
+		Restaurante restauranteAtual = buscarOuFalhar(restauranteId);
+		
+		restauranteAtual.fechar();
 	}
 	
 	@Transactional
@@ -86,41 +100,25 @@ public class CadastroRestauranteService {
 		restaurante.adicionarFormaPagamento(formaPagamento);
 	}
 	
+	@Transactional
+	public void desassociarResponsavel(Long restauranteId, Long usuarioId) {
+		Restaurante restaurante = buscarOuFalhar(restauranteId);
+		Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
+		
+		restaurante.removerResponsavel(usuario);
+	}
+	
+	@Transactional
+	public void associarResponsavel(Long restauranteId, Long usuarioId) {
+		Restaurante restaurante = buscarOuFalhar(restauranteId);
+		Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
+		
+		restaurante.adicionarResponsavel(usuario);
+	}
+	
 	public Restaurante buscarOuFalhar(Long restauranteId) {
 		return restauranteRepository.findById(restauranteId)
 			.orElseThrow(() -> new RestauranteNaoEncontradoException(restauranteId));
 	}
-	
-	@Transactional
-	public void abrir(Long restauranteId) {
-	    Restaurante restauranteAtual = buscarOuFalhar(restauranteId);
-	    
-	    restauranteAtual.abrir();
-	}
-
-	@Transactional
-	public void fechar(Long restauranteId) {
-	    Restaurante restauranteAtual = buscarOuFalhar(restauranteId);
-	    
-	    restauranteAtual.fechar();
-	}  
-	
-	@Transactional
-	public void desassociarResponsavel(Long restauranteId, Long usuarioId) {
-	    Restaurante restaurante = buscarOuFalhar(restauranteId);
-	    Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
-	    
-	    restaurante.removerResponsavel(usuario);
-	}
-
-	@Transactional
-	public void associarResponsavel(Long restauranteId, Long usuarioId) {
-	    Restaurante restaurante = buscarOuFalhar(restauranteId);
-	    Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
-	    
-	    restaurante.adicionarResponsavel(usuario);
-	}
-	
-	
 	
 }
