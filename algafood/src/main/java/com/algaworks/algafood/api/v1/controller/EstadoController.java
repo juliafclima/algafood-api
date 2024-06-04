@@ -23,6 +23,7 @@ import com.algaworks.algafood.api.v1.assembler.EstadoModelAssembler;
 import com.algaworks.algafood.api.v1.model.EstadoModel;
 import com.algaworks.algafood.api.v1.model.input.EstadoInput;
 import com.algaworks.algafood.api.v1.openapi.controller.EstadoControllerOpenApi;
+import com.algaworks.algafood.core.security.CheckSecurity;
 import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
 import com.algaworks.algafood.domain.service.CadastroEstadoService;
@@ -39,56 +40,60 @@ public class EstadoController implements EstadoControllerOpenApi {
 	
 	@Autowired
 	private EstadoModelAssembler estadoModelAssembler;
-
-	@Autowired
-	private EstadoInputDisassembler estadoInputDisassembler;    
 	
-	//GET Listar
+	@Autowired
+	private EstadoInputDisassembler estadoInputDisassembler;
+	
+	@CheckSecurity.Estados.PodeConsultar
 	@Override
 	@GetMapping
 	public CollectionModel<EstadoModel> listar() {
-	    List<Estado> todosEstados = estadoRepository.findAll();
-	    
-	    return estadoModelAssembler.toCollectionModel(todosEstados);
+		List<Estado> todosEstados = estadoRepository.findAll();
+		
+		return estadoModelAssembler.toCollectionModel(todosEstados);
 	}
 	
-	//GET buscar ID
+	@CheckSecurity.Estados.PodeConsultar
+	@Override
 	@GetMapping("/{estadoId}")
 	public EstadoModel buscar(@PathVariable Long estadoId) {
-	    Estado estado = cadastroEstado.buscarOuFalhar(estadoId);
-	    
-	    return estadoModelAssembler.toModel(estado);
+		Estado estado = cadastroEstado.buscarOuFalhar(estadoId);
+		
+		return estadoModelAssembler.toModel(estado);
 	}
 	
-	//POST adicionar
+	@CheckSecurity.Estados.PodeEditar
+	@Override
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public EstadoModel adicionar(@RequestBody @Valid EstadoInput estadoInput) {
-	    Estado estado = estadoInputDisassembler.toDomainObject(estadoInput);
-	    
-	    estado = cadastroEstado.salvar(estado);
-	    
-	    return estadoModelAssembler.toModel(estado);
+		Estado estado = estadoInputDisassembler.toDomainObject(estadoInput);
+		
+		estado = cadastroEstado.salvar(estado);
+		
+		return estadoModelAssembler.toModel(estado);
 	}
 	
-	//PUT Atualizar
+	@CheckSecurity.Estados.PodeEditar
+	@Override
 	@PutMapping("/{estadoId}")
 	public EstadoModel atualizar(@PathVariable Long estadoId,
-	        @RequestBody @Valid EstadoInput estadoInput) {
-	    Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
-	    
-	    estadoInputDisassembler.copyToDomainObject(estadoInput, estadoAtual);
-	    
-	    estadoAtual = cadastroEstado.salvar(estadoAtual);
-	    
-	    return estadoModelAssembler.toModel(estadoAtual);
-	}       
+			@RequestBody @Valid EstadoInput estadoInput) {
+		Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
+		
+		estadoInputDisassembler.copyToDomainObject(estadoInput, estadoAtual);
+		
+		estadoAtual = cadastroEstado.salvar(estadoAtual);
+		
+		return estadoModelAssembler.toModel(estadoAtual);
+	}
 	
-	//DELETE
+	@CheckSecurity.Estados.PodeEditar
+	@Override
 	@DeleteMapping("/{estadoId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long estadoId) {
-	    cadastroEstado.excluir(estadoId);	
+		cadastroEstado.excluir(estadoId);	
 	}
 	
 }
