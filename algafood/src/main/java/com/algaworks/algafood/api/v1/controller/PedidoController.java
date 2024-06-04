@@ -30,6 +30,7 @@ import com.algaworks.algafood.api.v1.openapi.controller.PedidoControllerOpenApi;
 import com.algaworks.algafood.core.data.PageWrapper;
 import com.algaworks.algafood.core.data.PageableTranslator;
 import com.algaworks.algafood.core.security.AlgaSecurity;
+import com.algaworks.algafood.core.security.CheckSecurity;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.exception.NegocioException;
 import com.algaworks.algafood.domain.filter.PedidoFilter;
@@ -39,13 +40,9 @@ import com.algaworks.algafood.domain.repository.PedidoRepository;
 import com.algaworks.algafood.domain.service.EmissaoPedidoService;
 import com.algaworks.algafood.infrastructure.repository.spec.PedidoSpecs;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-
 @RestController
 @RequestMapping(path = "/v1/pedidos", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PedidoController implements PedidoControllerOpenApi {
-
 
 	@Autowired
 	private PedidoRepository pedidoRepository;
@@ -68,24 +65,21 @@ public class PedidoController implements PedidoControllerOpenApi {
 	@Autowired
 	private AlgaSecurity algaSecurity;
 	
-	@ApiImplicitParams({
-		@ApiImplicitParam(value = "Nomes das propriedades para filtrar na resposta, separados por vírgula",
-				name = "campos", paramType = "query", type = "string")
-	})
 	@Override
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public PagedModel<PedidoResumoModel> pesquisar(PedidoFilter filtro,
-	                                               @PageableDefault(size = 10) Pageable pageable) {
+	@GetMapping
+	public PagedModel<PedidoResumoModel> pesquisar(PedidoFilter filtro, 
+			@PageableDefault(size = 10) Pageable pageable) {
 		Pageable pageableTraduzido = traduzirPageable(pageable);
-
+		
 		Page<Pedido> pedidosPage = pedidoRepository.findAll(
 				PedidoSpecs.usandoFiltro(filtro), pageableTraduzido);
-
+		
 		pedidosPage = new PageWrapper<>(pedidosPage, pageable);
-
+		
 		return pagedResourcesAssembler.toModel(pedidosPage, pedidoResumoModelAssembler);
 	}
 	
+	@Override
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public PedidoModel adicionar(@Valid @RequestBody PedidoInput pedidoInput) {
@@ -103,8 +97,8 @@ public class PedidoController implements PedidoControllerOpenApi {
 		}
 	}
 	
-	@ApiImplicitParam(value = "Nomes das propriedades para filtrar na resposta, separados por vírgula",
-			name = "campos", paramType = "query", type = "string")
+	@CheckSecurity.Pedidos.PodeBuscar
+	@Override
 	@GetMapping("/{codigoPedido}")
 	public PedidoModel buscar(@PathVariable String codigoPedido) {
 		Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
@@ -129,4 +123,3 @@ public class PedidoController implements PedidoControllerOpenApi {
 	}
 	
 }
-        

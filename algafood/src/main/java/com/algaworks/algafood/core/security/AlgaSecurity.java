@@ -10,7 +10,7 @@ import com.algaworks.algafood.domain.repository.RestauranteRepository;
 
 @Component
 public class AlgaSecurity {
-	
+
 	@Autowired
 	private RestauranteRepository restauranteRepository;
 	
@@ -19,12 +19,13 @@ public class AlgaSecurity {
 	}
 	
 	public Long getUsuarioId() {
-	Jwt jwt = (Jwt) getAuthentication().getPrincipal();
-	
-	return jwt.getClaim("usuario_id");
+		Jwt jwt = (Jwt) getAuthentication().getPrincipal();
+		
+		return jwt.getClaim("usuario_id");
 	}
-
+	
 	public boolean gerenciaRestaurante(Long restauranteId) {
 		return restauranteRepository.existsResponsavel(restauranteId, getUsuarioId());
 	}
+	
 }
