@@ -1,14 +1,18 @@
 package com.algaworks.algafood.api.v1.openapi.controller;
 
+import java.util.List;
+
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.http.ResponseEntity;
+
 import com.algaworks.algafood.api.v1.model.RestauranteApenasNomeModel;
 import com.algaworks.algafood.api.v1.model.RestauranteBasicoModel;
 import com.algaworks.algafood.api.v1.model.RestauranteModel;
 import com.algaworks.algafood.api.v1.model.input.RestauranteInput;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
+@SecurityRequirement(name = "security_auth")
 public interface RestauranteControllerOpenApi {
 
 	CollectionModel<RestauranteBasicoModel> listar();
