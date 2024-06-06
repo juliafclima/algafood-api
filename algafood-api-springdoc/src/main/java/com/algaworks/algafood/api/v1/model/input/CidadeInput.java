@@ -7,10 +7,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Setter
 @Getter
 public class CidadeInput {
 
+	@Schema(example = "Uberlândia")
 	@NotBlank
 	private String nome;
 
