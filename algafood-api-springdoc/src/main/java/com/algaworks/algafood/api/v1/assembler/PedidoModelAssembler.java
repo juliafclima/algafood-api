@@ -31,10 +31,7 @@ public class PedidoModelAssembler
 	public PedidoModel toModel(Pedido pedido) {
 		PedidoModel pedidoModel = createModelWithId(pedido.getCodigo(), pedido);
 		modelMapper.map(pedido, pedidoModel);
-		
-		// Não usei o método algaSecurity.podePesquisarPedidos(clienteId, restauranteId) aqui,
-		// porque na geração do link, não temos o id do cliente e do restaurante, 
-		// então precisamos saber apenas se a requisição está autenticada e tem o escopo de leitura
+
 		if (algaSecurity.podePesquisarPedidos()) {
 			pedidoModel.add(algaLinks.linkToPedidos("pedidos"));
 		}
@@ -72,8 +69,7 @@ public class PedidoModelAssembler
 			pedidoModel.getEnderecoEntrega().getCidade().add(
 					algaLinks.linkToCidade(pedido.getEnderecoEntrega().getCidade().getId()));
 		}
-		
-		// Quem pode consultar restaurantes, também pode consultar os produtos dos restaurantes
+
 		if (algaSecurity.podeConsultarRestaurantes()) {
 			pedidoModel.getItens().forEach(item -> {
 				item.add(algaLinks.linkToProduto(
